@@ -6,7 +6,7 @@ const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 // OpenAI configuration check: allow missing API key when OPENAI_ENABLED is explicitly disabled
-const OPENAI_ENABLED = process.env.OPENAI_ENABLED !== 'false';
+const OPENAI_ENABLED = process.env.OPENAI_ENABLED === 'false';
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 if (OPENAI_ENABLED) {
   if (!OPENAI_API_KEY || OPENAI_API_KEY.startsWith('your_')) {
