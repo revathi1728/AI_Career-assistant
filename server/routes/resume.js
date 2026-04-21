@@ -1,10 +1,31 @@
+const AIResumeService = {
+  extractTextFromFile: async () => "dummy text",
+  parseResumeWithAI: async () => ({
+    personalInfo: {},
+    skills: [],
+    experience: [],
+    education: []
+  }),
+  analyzeResume: async () => ({
+    score: 0,
+    strengths: [],
+    improvements: [],
+    keywords: [],
+    summary: ""
+  }),
+  enhanceResumeContent: async () => ({
+    enhancedText: "",
+    explanation: ""
+  }),
+  basicParseText: () => ({})
+};
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs').promises;
 const Resume = require('../models/Resume');
 const CareerSuggestion = require('../models/CareerSuggestion');
-const AIResumeService = require('../services/AIResumeService');
+
 const { authMiddleware } = require('../middleware/auth');
 const { adminMiddleware } = require('../middleware/auth');
 
