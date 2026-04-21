@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./server
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongo:27017/ai-career-portal
+      - JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - mongo
+    restart: unless-stopped
+
+  frontend:
+    build: ./client
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    restart: unless-stopped
+
+volumes:
+  mongo_data:
+
