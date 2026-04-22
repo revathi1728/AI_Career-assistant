@@ -48,16 +48,8 @@ const allowedOrigins = [
   'https://spectacular-salmiakki-df9ca1.netlify.app'
 ];
 app.use(cors({
-  origin: (origin, callback) => {
-    // allow requests with no origin (like mobile apps or curl)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      return callback(null, true);
-    }
-    // not allowed
-    return callback(new Error('CORS policy: Origin not allowed'), false);
-  },
-  credentials: true,
+  origin: true,
+  credentials: true
 }));
 
 // Body parsing middleware
