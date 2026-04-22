@@ -41,10 +41,12 @@ app.use(limiter);
 // CORS configuration
 // CORS configuration
 // Allow common dev origins (3000, 3001, 3002) or your production domain.
-const allowedOrigins = process.env.NODE_ENV === 'production'
-  ? ['https://yourdomain.com']
-  : ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002'];
-
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'http://localhost:3002',
+  'https://spectacular-salmiakki-df9ca1.netlify.app'
+];
 app.use(cors({
   origin: (origin, callback) => {
     // allow requests with no origin (like mobile apps or curl)
